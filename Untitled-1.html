@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="estilo.css">
+  <title>Cadastro Engraçado</title>
+</head>
+<body>
+  <div class="form-container" id="form">
+    <h1>Cadastro</h1>
+    <input type="text" id="nome" placeholder="Seu nome" />
+    <select id="genero">
+      <option value="">Escolha o gênero</option>
+      <option value="masc">Masculino</option>
+      <option value="fem">Feminino</option>
+    </select>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <p id="mensagem"></p>
+  </div>
+
+  <div id="videoContainer" style="display: none;">
+    <video width="100%" height="500" autoplay muted>
+      <source src="the-office.mp4.mp4" type="video/mp4" />
+      Seu navegador não suporta o vídeo.
+    </video>
+  </div>
+
+  <script>
+    function cadastrar() {
+      const nome = document.getElementById('nome').value;
+      const genero = document.getElementById('genero').value;
+      const mensagem = document.getElementById('mensagem');
+
+      if (!nome || !genero) {
+        mensagem.textContent = "Preencha tudo, né?!";
+        return;
+      }
+
+      let generoTexto = genero === 'fem' ? "feminino" : "masculino";
+      mensagem.textContent = `Vixe! Alguém já é do gênero ${generoTexto}...`;
+
+      setTimeout(() => {
+        document.getElementById('form').style.display = 'none';
+        document.getElementById('videoContainer').style.display = 'block';
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
